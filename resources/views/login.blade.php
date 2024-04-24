@@ -12,7 +12,9 @@
 
 @include('components.header')
 
-<div class="page w-50 mx-auto">
+
+<div class="page w-50 mx-auto">@php
+    @endphp
     <h1 class="mb-5">Login</h1>
     @if(session('login_needed') !== null)
         <div class="alert alert-warning alert-dismissible fade show" role="alert">

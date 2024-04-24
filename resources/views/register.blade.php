@@ -11,7 +11,7 @@
 @include('components.header')
 <div class="page w-50 mx-auto">
     <h1 class="mb-5">Register</h1>
-    <form action="{{ route('register-submit') }}" method="post">
+    <form action="{{ route('register-submit') }}" method="post" enctype="multipart/form-data">
         @csrf
         <div class="mb-3">
             <label for="name" class="form-label">Name: </label>
@@ -34,6 +34,16 @@
             <div id="emailHelp" class="form-text text-danger">@error('password') {{ $message }} @enderror</div>
 
         </div>
+
+
+        <div class="mb-3">
+            <label for="profile_pic" class="form-label">Profile Picture</label>
+            <input name="profile_pic" type="file"
+                   class="form-control @error('profile_pic') is-invalid @enderror">
+            <div id="dpHelp" class="form-text text-danger">@error('profile_pic') {{ $message }} @enderror</div>
+
+        </div>
+
         {{--            <div class="mb-3 form-check">--}}
         {{--                <input type="checkbox" class="form-check-input" id="remember">--}}
         {{--                <label class="form-check-label" for="remember">Remember me</label>--}}

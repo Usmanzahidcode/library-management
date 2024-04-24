@@ -58,29 +58,35 @@ class UserController extends Controller
         ], [
             'email.unique' => 'This email is already associated with another account. Login!'
         ]);
-
         $user = new User();
 
         $user->name = $request->input('name');
         $user->email = $request->input('email');
         $user->password = Hash::make($request->input('password'));
 
+        /*
+         *
+         * File Upload Handling
+         *
+         * */
+
+        $name = time() . '_userDP_' . $request->profile_pic->getClientOriginalName();
+        $path = $request->file('profile_pic')->storeAs('public/avatars', $name);
+
+        $user->profile_pic = $name;
 
         $user->save();
 
+        $credentials = $request->only('email', 'password');
+
+        if (Auth::attempt($credentials)) {
+            $request->session()->regenerate();
+            return redirect()->intended(route('home'))->with('login-success', 'yes');
+        }
 
         return redirect(route('login'))->with('registration_success', 'true');
     }
 
-    public function logout()
-    {
-        if (Auth::check()) {
-            return view('logout_confirmation');
-        } else {
-            return view('logout_confirmation')->with('no_user', 'true');
-        }
-
-    }
 
     public function logoutSubmit()
     {
