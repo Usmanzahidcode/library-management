@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
-class isntLoggedOut
+class isAdmin
 {
     /**
      * Handle an incoming request.
@@ -17,9 +17,12 @@ class isntLoggedOut
     public function handle(Request $request, Closure $next): Response
     {
         if (Auth::check()) {
-            return $next($request);
-        } else {
-            return response()->view('logout_confirmation', ['no_user' => 'true']);
+            if (Auth::user()->role == 1) {
+                return $next($request);
+            } else {
+                return response()->view('components.403');
+            }
         }
+        return redirect(route('login'))->with('login_needed', 'true');
     }
 }

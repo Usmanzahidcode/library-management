@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Rev 9 Website</title>
+    <title>Register | National Library</title>
     <link rel="stylesheet" href="{{asset('assets/css/bootstraplocal.css')}}">
     @include('components.corecss')
 </head>

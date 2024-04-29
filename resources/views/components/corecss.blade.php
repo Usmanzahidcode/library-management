@@ -1,5 +1,15 @@
 <link rel="stylesheet" href="{{asset('assets/css/bootstraplocal.css')}}">
 <style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+</style>
+<style>
+    h1, h2, h3, h4, h5, h6, a, p {
+        margin: 0 !important;
+    }
+
     body {
         display: flex;
         flex-direction: column;
@@ -7,41 +17,22 @@
         justify-content: space-between;
     }
 
-    html {
-        height: 100vh;
-        position: relative;
-        overflow: hidden;
+    .title {
+        font-family: "Playfair Display", serif;
+        font-optical-sizing: auto;
     }
-    /*.absolute-element {*/
-    /*    position: absolute;*/
-    /*    right: 30px;*/
-    /*    bottom: 50%;*/
-    /*    transform: translate(0px, 50%);*/
-    /*    background-color: #3498db;*/
-    /*    color: #fff;*/
-    /*    padding: 20px;*/
-    /*    border-radius: 5px;*/
-    /*    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);*/
-    /*    z-index: 9999; !* Places the element above other elements *!*/
-    /*    animation: slideInRight 1s ease-in-out;*/
+    p, a {
+        font-family: "Poppins", sans-serif;
+        font-optical-sizing: auto;
+    }
+    .vertical-divider{
+        height: 50%;
+        border-right: solid black 1px;
+    }
 
-    /*}*/
-
-    /*@keyframes slideInRight {*/
-    /*    0% {*/
-    /*        transform: translate(100%, 50%);*/
-    /*        opacity: 0;*/
-    /*    }*/
-    /*    100% {*/
-    /*        transform: translate(0, 50%);*/
-    /*        opacity: 1;*/
-    /*    }*/
+    /*html {*/
+    /*    height: 100vh;*/
+    /*    position: relative;*/
+    /*    overflow: hidden;*/
     /*}*/
 </style>
-{{--<div class="absolute-element">--}}
-{{--    @if(Auth::check())--}}
-{{--        <p class="m-0">Logged in as: {{Auth::user()->name}} - {{Auth::user()->email}}</p>--}}
-{{--    @else--}}
-{{--        <p class="m-0">User logged out</p>--}}
-{{--    @endif--}}
-{{--</div>--}}

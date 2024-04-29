@@ -16,6 +16,10 @@ return new class extends Migration {
             $table->string('email')->unique();
             $table->string('password');
             $table->string('profile_pic')->nullable();
+
+            // Admin = 1 | user = 2
+            $table->unsignedTinyInteger('role')->default(2);
+
             $table->rememberToken();
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrentOnUpdate()->nullable();

@@ -12,10 +12,25 @@
     }
 
 </style>
-<header class="bg-body-secondary d-flex p-3 px-5 justify-content-between align-items-center">
+<header class="bg-body-secondary d-flex p-3 px-5 justify-content-between align-items-center rounded-bottom-3">
     <div class="logo text-black">
-        <a href="/" class="text-decoration-none text-black"><h3>Rev 9</h3></a>
+        <a href="/" class="text-decoration-none text-black d-flex align-items-center justify-content-center gap-3">
+            <img src="{{asset('assets/images/logo.png')}}" alt="" width="30">
+            <h3 class="title">National Library</h3>
+        </a>
     </div>
+    <nav class="nav d-flex align-items-center gap-3">
+        @if(!Auth::check())
+            <a href="{{route('books.index')}}" class="nav-link text-black-50">Books Catalogue</a>
+        @elseif(!Auth::check() or Auth::user()->role == 2)
+            <a href="{{route('books.index')}}" class="nav-link text-black-50">Books Catalogue</a>
+            <a href="{{route('favbooks.index')}}" class="nav-link text-black-50">My Favourites</a>
+        @elseif(Auth::user()->role == 1)
+            <a href="{{route('books.create')}}" class="nav-link text-black-50">Add New Book</a>
+            <a href="{{ route('manage.books') }}" class="nav-link text-black-50">Manage Books</a>
+            <a href="{{ route('users.manage') }}" class="nav-link text-black-50">Manage Users</a>
+        @endif
+    </nav>
     <nav class="nav d-flex align-items-center gap-3">
 
         @if(Auth::check())
@@ -48,7 +63,7 @@
                         Are you sure that you want to logout of this site! Think Again!
                     </div>
                     <div class="modal-footer">
-                        <a  href="{{route('logout-submit')}}" type="button" class="btn btn-danger">Confirm Logout!</a>
+                        <a href="{{route('logout-submit')}}" type="button" class="btn btn-danger">Confirm Logout!</a>
                     </div>
                 </div>
             </div>

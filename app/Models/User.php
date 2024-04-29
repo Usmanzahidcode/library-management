@@ -15,4 +15,9 @@ class User extends Authenticatable
     protected $guarded = [];
 
 
+    public function favoriteBooks()
+    {
+        return $this->belongsToMany(Book::class, 'user_favorite_books')->withPivot('note','created_at');
+    }
+
 }

@@ -19,7 +19,7 @@ class isLoggedIn
         if (Auth::check()) {
             return $next($request);
         } else {
-            return redirect(route('login'))->with('login_needed', 'true');
+                return redirect(route('login'))->with('login_needed', 'true');
         }
     }
 }
